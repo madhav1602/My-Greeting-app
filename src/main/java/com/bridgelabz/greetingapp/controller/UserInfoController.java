@@ -20,4 +20,9 @@ public class UserInfoController {
     public void create(@RequestBody UserInfoModel user){
         userinfoimpl.createUser(user);
     }
+
+    @PutMapping("/update/query")
+    public String update(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName, @RequestParam(value = "id") Long id){
+        return userinfoimpl.updateUser(id,firstName,lastName);
+    }
 }

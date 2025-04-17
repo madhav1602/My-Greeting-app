@@ -14,7 +14,7 @@ public class UserInfoImpl implements IUserInfoService {
 
 
     public void createUser(UserInfoModel user) {
-        System.out.println("Creating user: " ); // log input
+        System.out.println("Creating user...." ); // log input
         userinforepository.save(user);
         System.out.println("User saved successfully.");
     }
@@ -24,6 +24,15 @@ public class UserInfoImpl implements IUserInfoService {
         Optional<UserInfoModel> user = userinforepository.findById(id);
         UserInfoModel u=user.get();
         return "hello "+u.getFirstName()+" "+u.getLastName();
+    }
+
+    public String updateUser(Long id, String firstName, String lastName){
+        Optional<UserInfoModel> user=userinforepository.findById(id);
+        UserInfoModel u= user.get();
+        u.setFirstName(firstName);
+        u.setLastName(lastName);
+        userinforepository.save(u);
+        return "User details updated successfully: "+u.getId()+" "+ u.getFirstName()+" "+u.getLastName();
     }
 
 
