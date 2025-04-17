@@ -12,8 +12,9 @@ public class UserInfoController {
     UserInfoImpl userinfoimpl;
 
     @GetMapping("/display/{id}")
-    public String display(@PathVariable Long id){
+    public String display(@PathVariable("id") Long id){
         return userinfoimpl.getByID(id);
+
     }
     @PostMapping("/createuser")
     public void create(@RequestBody UserInfoModel user){
